@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolControlSystem.Model;
 using SchoolControlSystem.ModelServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -68,6 +69,23 @@ namespace SchoolControlSystem.DataBase
             }
 
             return courses;
+        }
+        public void FillStudentDataBase()
+        {
+            string studentName;
+
+            for(int i = 0; i< 5; i++)
+            {
+                studentName = "stu" + 1;
+
+                AddStudent(new Student()
+                {
+                    name = studentName,
+                    birthDate = DateTime.Now.AddYears(-20).ToShortDateString()
+                });
+            }
+
+            schoolContext.SaveChanges();
         }
         public void AddCourse(int ID, string courseCode)
         {

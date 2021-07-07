@@ -29,6 +29,10 @@ namespace SchoolControlSystem.DataBase
         {
             return null;
         }
+        public void FillStudentDataBase()
+        {
+
+        }
         public void AddCourse(int ID, string courseCode)
         {
 

@@ -11,6 +11,10 @@ namespace SchoolControlSystem.DataBase
 
         void UpdateStudentGrade(int ID, string courseCode, int grade);
 
+        void FillInstructorDataBase();
+
+        List<Instructor> GetInstructors();
+
         List<Student> GetCourseStudentList(string courseCode);
 
         List<Student> GetInstructorStudentList(int instructorID);

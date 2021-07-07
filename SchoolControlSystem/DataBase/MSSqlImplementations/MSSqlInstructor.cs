@@ -29,6 +29,29 @@ namespace SchoolControlSystem.DataBase
 
             schoolContext.SaveChanges();
         }
+
+        public void FillInstructorDataBase()
+        {
+            string instructorName;
+
+            for(int i = 0; i<5; i++)
+            {
+                instructorName = "ins" + i;
+
+                schoolContext.instructors.Add(new Instructor()
+                {
+                    name = instructorName,
+                    birthDate = DateTime.Now.AddYears(-40).ToShortDateString()
+                });
+            }
+
+            schoolContext.SaveChanges();
+        }
+
+        public List<Instructor> GetInstructors()
+        {
+            return schoolContext.instructors.ToList();
+        }
         public List<Student> GetCourseStudentList(string courseCode)
         {
             Course course = schoolContext.courses.Include(c => c.CourseGrades)

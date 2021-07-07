@@ -1,4 +1,6 @@
 ﻿using SchoolControlSystem.DataBase;
+using SchoolControlSystem.DataBase.Interfaces;
+using SchoolControlSystem.DataBase.MSSqlImplementations;
 using SchoolControlSystem.Model;
 using SchoolControlSystem.ModelServices;
 using System;
@@ -18,7 +20,8 @@ namespace SchoolControlSystem
             IStudentDataBase studentDataBase = new MSSqlStudent(schoolContext);
             IInstructorDataBase instructorDataBase = new MSSqlInstructor(schoolContext);
             IAcademicStaffDataBase academicStaffDataBase = new MSSqlAcademicStaff(schoolContext);
-            DataBaseUtilities dataBaseUtilities = new DataBaseUtilities(schoolContext);
+            ICourseDataBase courseDataBase = new MSSqlCourse(schoolContext);
+            DataBaseUtilities dataBaseUtilities = new DataBaseUtilities(studentDataBase, courseDataBase, instructorDataBase);
 
             AcademicStaffServices academicStaffService = new AcademicStaffServices(studentDataBase
                                                                                 , instructorDataBase
